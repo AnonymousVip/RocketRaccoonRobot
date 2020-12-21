@@ -21,4 +21,15 @@ else{
 }
 
 }
+
+function can_user($chatid,$userid,$permission){
+$JSON = json_decode(file_get_contents("https://api.telegram.org/bot1428124129:AAHLK6rHmSQp8LoyIm5jYfw9QcxUviVFFg8/getChatMember?chat_id=$chatid&user_id=$userid"),TRUE);
+if(is_null($JSON['result']["$permission"]) or $JSON['result']["$permission"]){
+	return true;
+}
+else{
+	return false;
+}
+
+}
 ?>
