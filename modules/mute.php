@@ -4,31 +4,33 @@ function check(){
 	global $reply_message_user_id;
 	global $cid;
 	global $fid;
-	if(!is_user_admin($cid,1428124129)){
+	switch ($cid){
+	case(!is_user_admin($cid,1428124129)):
 		$reply = "\o/ I An Not Admin!! Alexa Play Tera Baap Aaya 😏";
 		return $reply;
-	}
-	if(!can_bot($cid,'can_restrict_members')){
+	
+	case(!can_bot($cid,'can_restrict_members')):
 		$reply = "I am Not Given The Right To Mute And Unmute People!!";
 		return $reply;
-	}
-	if($reply_message == false){
+	
+	case($reply_message == false):
 		$reply = "Reply To A Message To Mute Him!!";
 		return $reply;
-	}
-	if($reply_message_user_id == '1428124129'){
+	
+	case($reply_message_user_id == '1428124129'):
 		$reply = "Mute Myself ! 😏..Shut Up You Fool!!";
 	return $reply;
-	}
-	if(is_user_admin($cid,$reply_message_user_id)){
+	
+	case(is_user_admin($cid,$reply_message_user_id)):
 		$reply = "How High Are You To Mute An Admin!!";
 		return $reply;
-	}
-	if(!is_user_admin($cid,$fid)){
+	
+	case(!is_user_admin($cid,$fid)):
 		$reply = "Only Admins Can Execute This Command!!";
 		return $reply;
-	}
+	default:
 	return null;
+}
 }
 function mute(){
 	global $reply_message;
