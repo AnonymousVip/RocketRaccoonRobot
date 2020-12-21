@@ -52,7 +52,7 @@ if($reply){
 botaction("sendMessage",['chat_id'=>$cid,'text'=>$reply,'reply_to_message_id'=>$mid]);
 }
 else{
-    if (is_null($check['result']['can_send_messages']) or $check['result']['can_send_messages'] == '1') {
+    if (can_user($cid,$reply_message_user_id,'can_send_messages')) {
         botaction("restrictChatMember",['chat_id'=>$cid,'user_id'=>$reply_message_user_id,'can_send_messages'=>'False']);
         $log_message = "
         <b>Chat Name :</b><u>$gname</u>
