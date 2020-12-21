@@ -73,59 +73,14 @@ $thug_chat_id = '';
 $chat_id = (string)$cid;
 $thug_chat_id = "-1001291062558";
 $message_dump = "-1001464778576";
-########################################NEEDED VARIABLES#######################
-    $admin_json=[
-        'chat_id'=>$cid
-    ];
-    $curl232 = curl_init();
-    curl_setopt($curl232, CURLOPT_URL,"https://api.telegram.org/bot$tok/getChatAdministrators?");
-    curl_setopt($curl232, CURLOPT_POST, 1);
-    curl_setopt($curl232, CURLOPT_POSTFIELDS, $admin_json);
-    curl_setopt($curl232, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($curl232, CURLOPT_SSL_VERIFYHOST, 0);
-    curl_setopt($curl232, CURLOPT_SSL_VERIFYPEER, 0);
- $resp22 = curl_exec($curl232);
-    $adms = json_decode($resp22,true);
- $total = count($adms['result']);
- $array_admin = '';
-    for ($i=0; $i < $total ; $i++) { 
-        $ddams = $adms['result'][$i]['user']['id'];
-        $admin_id_list =  "$ddams,";
-        $array_admin .= $admin_id_list;
-    }
-$admin_array = explode(',', $array_admin);
 
-###############################################################################
-#####################USER PERMISSION##################################################################
-      $ch12 = curl_init();
-curl_setopt($ch12, CURLOPT_URL, "https://api.telegram.org/bot$tok/getChatMember?chat_id=$cid&user_id=$reply_message_user_id"); 
-curl_setopt($ch12, CURLOPT_POST, false); 
-curl_setopt($ch12, CURLOPT_RETURNTRANSFER, 1); 
-    $output212 = curl_exec($ch12);
-$json122 = json_decode($output212,true);
-    curl_close($ch122);
-$can_send_messages =  $json122['result']['can_send_messages'];
-$can_send_media_messages = $json122['result']['can_send_media_messages'];
-$can_send_other_messages = $json122['result']['can_send_other_messages'];
-$can_add_web_page_previews = $json122['result']['can_add_web_page_previews'];
-$stato = $json122['result']['status'];
-##########################################################################################
-
-#####################################CHECK ADMIN #########################################
-$admi = curl_init();
-curl_setopt($admi, CURLOPT_URL, "https://api.telegram.org/bot$tok/getChatMember?chat_id=$cid&user_id=$fid"); 
-curl_setopt($admi, CURLOPT_POST, false); 
-curl_setopt($admi, CURLOPT_RETURNTRANSFER, 1); 
-    $output2121 = curl_exec($admi);
-$json1221 = json_decode($output2121,true);
-    curl_close($admi);
-$status = $json1221['result']['status'];
-#########################################################################################
 include 'modules/welcome.php';
 include 'modules/ping.php';
 include 'modules/logo.php';
 include 'modules/dictionary.php';
 include 'modules/paste.php';
+include 'modules/profile_photo.php';
+include 'modules/help_functions.php';
 include 'modules/mute.php';
 
 
@@ -177,4 +132,5 @@ welcome();
 ping();
 logo();
 mean();
+sendProfilePhoto();
 echo "HI";
