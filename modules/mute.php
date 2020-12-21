@@ -57,7 +57,7 @@ else{
         <b>Action : </b><u>Muted A Person </u>
         <b>Admin : </b><u>$fname</u>
         <b>User : </b><u>$reply_message_user_fname</u>";
-        file_put_contents("php://stderr", "Bot Started By $fname");
+        file_put_contents("php://stderr", "$log_message");
         botaction("sendMessage",['chat_id'=>$cid,'text'=>"Thats More Than Your Limits \n Muted $reply_message_user_fname Successfully!!",'reply_to_message_id'=>$mid]);
 }
 else{
