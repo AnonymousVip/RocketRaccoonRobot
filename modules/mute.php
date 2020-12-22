@@ -73,25 +73,27 @@ function mute(){
 	global $mid;
 	global $text;
 	global $tok;
-	global $dadel;
-	global $gname;
-	global $fname;
 	global $reply_message_user_fname;
-$check = json_decode(file_get_contents("https://api.telegram.org/bot$tok/getChatMember?chat_id=$cid&user_id=$reply_message_user_id"),true);
-print_r($check);
-$reply =  check();
-if($reply){
-botaction("sendMessage",['chat_id'=>$cid,'text'=>$reply,'reply_to_message_id'=>$mid]);
-}
-else{
-    if (can_user($cid,$reply_message_user_id,'can_send_messages')) {
-        botaction("restrictChatMember",['chat_id'=>$cid,'user_id'=>$reply_message_user_id,'can_send_messages'=>'False']);
-        botaction("sendMessage",['chat_id'=>$cid,'text'=>"Thats More Than Your Limits \n Muted $reply_message_user_fname Successfully!!",'reply_to_message_id'=>$mid]);
-}
-else{
-botaction("sendMessage",['chat_id'=>$cid,'text'=>"This User Is Already Muted!!",'reply_to_message_id'=>$mid]);
-}	
-}
-}
-// $__module_name__ = "Muting";
+	$reply =  check();
+	if($reply){
+
+	botaction("sendMessage",['chat_id'=>$cid,'text'=>$reply,'reply_to_message_id'=>$mid]);
+
+	}
+	else{
+
+	    if (can_user($cid,$reply_message_user_id,'can_send_messages')) {
+	        botaction("restrictChatMember",['chat_id'=>$cid,'user_id'=>$reply_message_user_id,'can_send_messages'=>'False']);
+	        botaction("sendMessage",['chat_id'=>$cid,'text'=>"Thats More Than Your Limits \n Muted $reply_message_user_fname Successfully!!",'reply_to_message_id'=>$mid]);
+	}
+
+	else{
+
+	botaction("sendMessage",['chat_id'=>$cid,'text'=>"This User Is Already Muted!!",'reply_to_message_id'=>$mid]);
+
+	}	
+
+	}
+
+}// $__module_name__ = "Muting";
 ?>
