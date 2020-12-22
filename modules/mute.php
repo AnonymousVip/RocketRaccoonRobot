@@ -95,5 +95,6 @@ function mute(){
 
 	}
 
-}// $__module_name__ = "Muting";
+}
+// $__module_name__ = "Muting";
 ?>
