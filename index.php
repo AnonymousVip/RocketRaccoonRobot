@@ -137,4 +137,7 @@ sendProfilePhoto();
 if(startsWith($text,'/mute')){
 mute();
 }
+if(startsWith($text,'/unmute')){
+unmute();
+}
 echo "HI";
