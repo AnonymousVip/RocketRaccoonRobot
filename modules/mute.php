@@ -13,7 +13,7 @@ function check(){
 		$reply = "I am Not Given The Right To Mute And Unmute People!!";
 		return $reply;
 	
-	case($reply_message == false):
+	case(!$reply_message):
 		$reply = "Reply To A Message To Mute Him!!";
 		return $reply;
 	
