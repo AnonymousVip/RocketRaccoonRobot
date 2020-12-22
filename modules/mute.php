@@ -79,7 +79,6 @@ function mute(){
 	global $reply_message_user_fname;
 $check = json_decode(file_get_contents("https://api.telegram.org/bot$tok/getChatMember?chat_id=$cid&user_id=$reply_message_user_id"),true);
 print_r($check);
-if(startsWith($text,'/mute')){
 $reply =  check();
 if($reply){
 botaction("sendMessage",['chat_id'=>$cid,'text'=>$reply,'reply_to_message_id'=>$mid]);
@@ -92,7 +91,6 @@ else{
 else{
 botaction("sendMessage",['chat_id'=>$cid,'text'=>"This User Is Already Muted!!",'reply_to_message_id'=>$mid]);
 }	
-}
 }
 }
 // $__module_name__ = "Muting";
