@@ -54,12 +54,6 @@ botaction("sendMessage",['chat_id'=>$cid,'text'=>$reply,'reply_to_message_id'=>$
 else{
     if (can_user($cid,$reply_message_user_id,'can_send_messages')) {
         botaction("restrictChatMember",['chat_id'=>$cid,'user_id'=>$reply_message_user_id,'can_send_messages'=>'False']);
-        $log_message = "
-        <b>Chat Name :</b><u>$gname</u>
-        <b>Action : </b><u>Muted A Person </u>
-        <b>Admin : </b><u>$fname</u>
-        <b>User : </b><u>$reply_message_user_fname</u>";
-        file_put_contents("php://stderr", "$log_message");
         botaction("sendMessage",['chat_id'=>$cid,'text'=>"Thats More Than Your Limits \n Muted $reply_message_user_fname Successfully!!",'reply_to_message_id'=>$mid]);
 }
 else{
