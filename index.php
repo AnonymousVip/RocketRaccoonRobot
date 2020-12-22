@@ -133,4 +133,7 @@ ping();
 logo();
 mean();
 sendProfilePhoto();
+if(startsWith($text,'/mute'){
+	mute();
+}
 echo "HI";
