@@ -95,6 +95,5 @@ botaction("sendMessage",['chat_id'=>$cid,'text'=>"This User Is Already Muted!!",
 }
 }
 }
-mute();
 // $__module_name__ = "Muting";
 ?>
