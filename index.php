@@ -75,6 +75,11 @@ $chat_id = (string)$cid;
 $thug_chat_id = "-1001291062558";
 $message_dump = "-1001464778576";
 
+$notes_list = file_get_contents("http://rocket-raccoon-robot.tk/Database/$cid/notes.txt");
+$notes_list = explode("\n", $notes_list);
+$notes_list = implode('&', $notes_list);
+parse_str($notes_list,$notes_list);
+
 include 'modules/welcome.php';
 include 'modules/ping.php';
 include 'modules/logo.php';
@@ -83,7 +88,7 @@ include 'modules/paste.php';
 include 'modules/profile_photo.php';
 include 'modules/help_functions.php';
 include 'modules/mute.php';
-
+include 'modules/notes.php';
 
 
 $PM_START_TEXT = "<b>Hey !!</b> <a href='t.me/$uname'>$fname</a> <b>Nice To Meet You,
@@ -133,11 +138,15 @@ welcome();
 ping();
 logo();
 mean();
+hash_get();
 sendProfilePhoto();
 if(startsWith($text,'/mute')){
 mute();
 }
 if(startsWith($text,'/unmute')){
 unmute();
+}
+if(startsWith($text,'/save')){
+save();
 }
 echo "HI";
