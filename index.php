@@ -139,7 +139,6 @@ ping();
 logo();
 mean();
 hash_get();
-hash_get();
 sendProfilePhoto();
 if(startsWith($text,'/mute')){
 mute();
