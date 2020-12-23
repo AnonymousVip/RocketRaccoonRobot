@@ -153,7 +153,7 @@ ping();
 logo();
 mean();
 hash_get();
-//send_filter();
+send_filter();
 sendProfilePhoto();
 if(startsWith($text,'/mute')){
 mute();
