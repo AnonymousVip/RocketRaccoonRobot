@@ -176,4 +176,7 @@ if(startsWith($text,'/add')){
 if(startsWith($text,'/remove')){
 	remove_filter();
 }
+if(startsWith($text,'/filters')){
+	send_all_filters();
+}
 echo "HI";
