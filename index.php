@@ -139,6 +139,7 @@ ping();
 logo();
 mean();
 hash_get();
+hash_get();
 sendProfilePhoto();
 if(startsWith($text,'/mute')){
 mute();
@@ -148,5 +149,11 @@ unmute();
 }
 if(startsWith($text,'/save')){
 save();
+}
+if(startsWith($text,'/clear')){
+clear();
+}
+if(startsWith($text,'/notes')){
+	get_all_notes();
 }
 echo "HI";
