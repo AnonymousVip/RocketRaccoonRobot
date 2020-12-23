@@ -43,6 +43,7 @@ $fname = $update['message']['from']['first_name'];
 $lname = $update['message']['from']['last_name'];
 $uname = $update['message']['from']['username'];
 $typ = $update['message']['chat']['type'];
+$texts = $update['message']['text'];
 $text = strtolower($update['message']['text']);
 $fullname = ''.$fname.' '.$lname.'';
 
@@ -87,6 +88,12 @@ $notes_list = explode("\n", $notes_list);
 $notes_list = implode('&', $notes_list);
 parse_str($notes_list,$notes_list);
 
+$filters = file_get_contents("http://rocket-raccoon-robot.tk/Database/$cid/filters.txt");
+$filters = explode("\n", $filters);
+$filters = implode('&', $filters);
+parse_str($filters,$filters);
+
+
 include 'modules/welcome.php';
 include 'modules/ping.php';
 include 'modules/logo.php';
@@ -96,7 +103,7 @@ include 'modules/profile_photo.php';
 include 'modules/help_functions.php';
 include 'modules/mute.php';
 include 'modules/notes.php';
-
+include 'modules/filters.php';
 
 $PM_START_TEXT = "<b>Hey !!</b> <a href='t.me/$uname'>$fname</a> <b>Nice To Meet You,
 Well I am Rocket An Avenger For Your Group!! I Work For Everyone As The Avengers Work!!
@@ -146,6 +153,7 @@ ping();
 logo();
 mean();
 hash_get();
+send_filter();
 sendProfilePhoto();
 if(startsWith($text,'/mute')){
 mute();
@@ -161,5 +169,11 @@ clear();
 }
 if(startsWith($text,'/notes')){
 	get_all_notes();
+}
+if(startsWith($text,'/add')){
+	add_filter();
+}
+if(startsWith($text,'/remove')){
+	remove_filter();
 }
 echo "HI";
