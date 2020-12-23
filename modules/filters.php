@@ -150,5 +150,31 @@ else{
 }
 
 }
-?>
 
+function send_all_filters(){
+	global $reply_message;
+	global $reply_message_user_id;
+	global $reply_message_id;
+	global $cid;
+	global $fid;
+	global $mid;
+	global $text;
+	global $tok;
+	global $gname;
+	global $filters;
+	$note = '';
+    foreach($filters as $key => $value) {
+        $not = "• <code>$key</code>\n";
+        $note .= $not;
+    }
+    $note_message = "Filters In <b>$gname</b> :\n$note";
+    if($note == '')
+    {
+	botaction("sendMessage",['chat_id'=>$cid,'text'=>"There are No Filters In $gname..",'reply_to_message_id'=>$mid]);
+    }
+    else
+    {
+    	botaction("sendMessage",['chat_id'=>$cid,'text'=>"$note_message",'parse_mode'=>'HTML','reply_to_message_id'=>$mid]);
+    }
+}
+?>
