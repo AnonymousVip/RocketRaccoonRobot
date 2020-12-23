@@ -17,10 +17,17 @@ function botaction($method, $data){
     $dueto = $dadel['description'];
     return $output;
 }
-function startsWith ($string, $startString) 
-{ 
-    $len = strlen($startString); 
-    return (substr($string, 0, $len) === $startString); 
+function startsWith($content,$startString)
+{
+$con_arr = explode(' ',$content);
+	if($con_arr['0'] == $startString)
+	{
+	return true;
+	}
+	else
+	{
+	return false;
+	}
 }
 
 $update = file_get_contents('php://input');
