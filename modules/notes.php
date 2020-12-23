@@ -104,28 +104,27 @@ function add_filter(){
 	}
 }
 
-
-// function send_filter(){
-// 	global $text;
-// 	global $cid;
-// 	global $mid;
-// 	global $filters;
-// 	global $message_dump;
-// 	foreach ($filters as $fkw => $fri) {
-//     $text_array = explode(' ', $text);
-//     $fkw = str_replace(' ', '_', $fkw);
-//     if(str_contains($text, $fkw)){
-//         $reply_filter_id = $filters["$fri"];
-//         $send_filter_msg = [
-//             'from_chat_id'=>$message_dump,
-//             'chat_id'=>$cid,
-//             'message_id'=>$fri,
-//             'reply_to_message_id'=>$mid,
-//         ];
-//         botaction("copyMessage",$send_filter_msg);
-//     }
-// }
-// }
+function send_filter(){
+	global $text;
+	global $cid;
+	global $mid;
+	global $filters;
+	global $message_dump;
+	foreach ($filters as $fkw => $fri) {
+    $text_array = explode(' ', $text);
+    $fkw = str_replace(' ', '_', $fkw);
+    if(str_contains($text, $fkw)){
+        $reply_filter_id = $filters["$fri"];
+        $send_filter_msg = [
+            'from_chat_id'=>$message_dump,
+            'chat_id'=>$cid,
+            'message_id'=>$fri,
+            'reply_to_message_id'=>$mid,
+        ];
+        botaction("copyMessage",$send_filter_msg);
+    }
+}
+}
 
 function remove_filter(){
 	global $reply_message;
@@ -164,3 +163,4 @@ else{
 
 }
 ?>
+
