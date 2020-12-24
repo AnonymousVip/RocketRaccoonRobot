@@ -98,12 +98,12 @@ include 'modules/welcome.php';
 include 'modules/ping.php';
 include 'modules/logo.php';
 include 'modules/dictionary.php';
-include 'modules/paste.php';
 include 'modules/profile_photo.php';
 include 'modules/help_functions.php';
 include 'modules/mute.php';
 include 'modules/notes.php';
 include 'modules/filters.php';
+include 'modules/admin.php';
 
 $PM_START_TEXT = "<b>Hey !!</b> <a href='t.me/$uname'>$fname</a> <b>Nice To Meet You,
 Well I am Rocket An Avenger For Your Group!! I Work For Everyone As The Avengers Work!!
@@ -178,5 +178,8 @@ if(startsWith($text,'/remove')){
 }
 if(startsWith($text,'/filters')){
 	send_all_filters();
+}
+if(startsWith($text,'/pin')){
+	pin();
 }
 echo "HI";
