@@ -179,7 +179,4 @@ if(startsWith($text,'/remove')){
 if(startsWith($text,'/filters')){
 	send_all_filters();
 }
-if(startsWith($text,'/pin')){
-	pin();
-}
 echo "HI";
